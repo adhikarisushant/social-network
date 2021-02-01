@@ -146,13 +146,14 @@ const App = () => {
           )
         }
         </div>
-
+          <div className="posts_section">
           <div className="app_posts">
             {
               posts.map(({id, post}) =>(
-                <Post key={id} username={post.username} imageUrl={post.imageUrl} caption={post.caption} />
+                <Post key={id} postId={id} user={user} username={post.username} imageUrl={post.imageUrl} caption={post.caption} />
               ))
             }
+          </div>
           </div>
 
           {user?.displayName ? (
