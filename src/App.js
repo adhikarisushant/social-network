@@ -94,16 +94,7 @@ const App = () => {
   }
 
   return (
-    <div className="app">
-
-          {user?.displayName ? (
-            <ImageUpload username={user.displayName} />
-          ) : (
-            <h3>Sorry you need to login to upload</h3>
-          )
-
-          }
-          
+    <div className="app">          
           <Modal
           open={open}
           onClose={() => setOpen(false)}>
@@ -143,8 +134,8 @@ const App = () => {
 
         <div className="app_header">
           <img className="app_headerImage" src={ logo } alt="" />
-        </div>
-        {
+
+          {
           user ? (
             <Button onClick={() => auth.signOut()}>Logout</Button>
           ) : (
@@ -154,13 +145,22 @@ const App = () => {
             </div>
           )
         }
+        </div>
 
-        <h1>Hello from app</h1>
+          <div className="app_posts">
+            {
+              posts.map(({id, post}) =>(
+                <Post key={id} username={post.username} imageUrl={post.imageUrl} caption={post.caption} />
+              ))
+            }
+          </div>
 
-          {
-            posts.map(({id, post}) =>(
-              <Post key={id} username={post.username} imageUrl={post.imageUrl} caption={post.caption} />
-            ))
+          {user?.displayName ? (
+            <ImageUpload username={user.displayName} />
+          ) : (
+            <h3>Sorry you need to login to upload</h3>
+          )
+
           }
     </div>
   );
