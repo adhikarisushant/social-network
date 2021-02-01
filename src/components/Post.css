@@ -15,6 +15,11 @@
 .post_text {
     font-weight: normal;
     padding: 20px;
+
+}
+
+.post_text strong {
+    margin-right: 10px;
 }
 
 .post_header {
